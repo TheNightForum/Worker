@@ -23,6 +23,7 @@ public class Handler {
     public static final String P_Creator = "creator";
     public static final String P_ShellScript = "isShellScript";
     public static final String P_ShellDir = "shellDir";
+    public static final String P_ZipURL = "zipURL";
 
     public static String readPackage(String string, String toRead){
         Properties prop = new Properties();
@@ -104,12 +105,12 @@ public class Handler {
         }
     }
 
-    public static void Download(File f, String string){
+    public static void Download(File f, String string, String file){
         try(
                 ReadableByteChannel in= Channels.newChannel(
 
-                        new URL(Data.BaseUrl + "packages/" + string + "/config.properties").openStream());
-                FileChannel out=new FileOutputStream(f + "/config.properties").getChannel() ) {
+                        new URL(Data.BaseUrl + "packages/" + string + "/" + file).openStream());
+                FileChannel out=new FileOutputStream(f + "/" + file).getChannel() ) {
             out.transferFrom(in, 0, Long.MAX_VALUE);
         }
         catch(IOException ex){

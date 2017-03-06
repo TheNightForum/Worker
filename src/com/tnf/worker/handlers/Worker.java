@@ -10,7 +10,7 @@ import java.net.URLConnection;
 public class Worker {
     private static Boolean isInternet;
     private static Boolean isInstalled;
-
+    private PackageHandler PH;
 
     public void main(String string){
         checkInternet();
@@ -28,7 +28,16 @@ public class Worker {
             File f = new File(Data.locationToInstall + job);
             if (!f.exists()){
                 f.mkdirs();
-                Handler.Download(f, job);
+                Handler.Download(f, job, "config.properties");
+                Logger.printLine("Installing " + PH.getName(job) + "...");
+                if(PH.getIsZip(job)){
+                    if (PH.getZipURL(job).equals("NONE")){
+                        if(PH.getZipDIR(job).equals("Default")){
+                            Handler.Download(f, job, PH.getName(job)+".zip");
+                            //OH shit... wait... we are going to re-do this so all the files are in one dir.
+                        }
+                    }
+                }
             }
         }else{
             Logger.printLine("Please connect to internet first...");
