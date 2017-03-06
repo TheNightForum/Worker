@@ -28,6 +28,10 @@ public class Logger {
         }
     }
 
+    public static void print(String inputString) {
+        System.out.print("| " + inputString);
+    }
+
     public static void printLine(String inputString) {
         System.out.println("| " + inputString);
     }
