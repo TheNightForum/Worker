@@ -26,6 +26,10 @@ public class Worker {
     public void install(String job){
         if (isInternet){
             File f = new File(Data.locationToInstall + job);
+            if (!f.exists()){
+                f.mkdirs();
+                Handler.Download(f, job);
+            }
         }else{
             Logger.printLine("Please connect to internet first...");
         }

@@ -8,7 +8,7 @@ import java.io.File;
 public class Data {
 
     public static String OPERATING_SYSTEM = System.getProperty("os.name").toLowerCase();
-    public static String BaseUrl = "https://TheNightForum.github.io/";
+    public static String BaseUrl = "https://thenightforum.github.io/WorkerPackages/";
     public static String location = "";
     public static String locationConfig = "";
     public static String locationToInstall = "";
